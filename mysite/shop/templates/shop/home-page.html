@@ -1,0 +1,106 @@
+{% extends 'shop/base.html' %}
+
+
+{% block title %}
+    GreenApple - Аптека в Алматы
+{% endblock %}
+
+{% block body %}
+    {% load static %}
+    <div class="popup-window">
+        <div class="popup-form">
+            <form method="post">
+                <div class="mb-3">
+                    <input type="text" name="name" placeholder="Введите ваше имя" class="reg-form__input form-control">
+                </div>
+                <div class="mb-3">
+                    <input type="email" name="email" placeholder="Введите ваш номер"
+                           class="reg-form__input form-control">
+                </div>
+                <div class="mb-3">
+                    <input type="reset" class="btn btn-secondary">
+{#                    <input type="submit" class="btn btn-success send_button">#}
+                    <button type="button" class="btn btn-success send_button">Отправить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <header>
+        <div class="menu-info">
+            <div class="info">
+                <a href="{% url 'shop:products_list' %}">Продукты</a>
+                <a href="{% url 'cart:cart_detail' %}">Корзинка</a>
+                <a href="{% url 'myauth:profile' %}">Личные данные</a>
+            </div>
+            <div class="order">
+                <span>+7 707 777-55-44</span>
+                <button class="btn btn-secondary btn-lg leave_call">Заказать звонок</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="first-block">
+        <div class="profile">
+            <h1>GreenApple</h1>
+            <p>Крупнейший в Казахстане мебельный-магазин</p>
+            <button class="btn btn-outline-success btn-lg product" data-link="http://127.0.0.1:8000/products">К товарам</button>
+        </div>
+    </section>
+
+    <section class="second-block">
+        <h2>Наши мебели</h2>
+        <div class="services-block">
+            <div>
+                <img src="{% static 'shop/img/sofa.avif' %}" alt="Данный файл не найден">
+                <p>Диваны и секции</p>
+            </div>
+            <div>
+                <img src="{% static 'shop/img/table.avif' %}" alt="Данный файл не найден">
+                <p>Столы и парты</p>
+            </div>
+            <div>
+                <img src="{% static 'shop/img/drawers.webp' %}" alt="Данный файл не найден">
+                <p>Комоды и ящики для хранения вещей</p>
+            </div>
+            <div>
+                <img src="{% static 'shop/img/chairs.avif' %}" alt="Данный файл не найден">
+                <p>Стулья</p>
+            </div>
+        </div>
+         <button class="btn btn-secondary btn-lg product ">Узнать стоимость</button>
+    </section>
+    <section class="price_section">
+        <div class="fixed-container">
+            <div class="price">
+                <h2>GreenApple основана в Германий</h2>
+                <p>
+                    Немецкая производственно-рознично торговая группа, одна из крупнейших в мире торговых сетей по продаже мебели и товаров для дома.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <footer class="end-block">
+        <div class="bottom menu">
+            <a href="{% url 'shop:products_list' %}">Продукты</a>
+            <a href="{% url 'cart:cart_detail' %}">Корзинка</a>
+            <a href="{% url 'myauth:profile' %}">Личные данные</a>
+        </div>
+        <div class="bottom info">
+            <p>greenapple@gmail.com</p>
+            <p>+7 707 777-55-44</p>
+        </div>
+        <div class="bottom order">
+             <button class="btn btn-secondary btn-lg leave_call">Заказать звонок</button>
+            <div class="media">
+                <img src="{% static 'shop/img/media/fb.png' %}" alt="Данный файл не найден">
+                <img src="{% static 'shop/img/media/vk.png' %}" alt="Данный файл не найден">
+                <img src="{% static 'shop/img/media/you.png' %}" alt="Данный файл не найден">
+                <img src="{% static 'shop/img/media/telegram.png' %}" alt="Данный файл не найден">
+                <img src="{% static 'shop/img/media/vk.png' %}" alt="Данный файл не найден">
+            </div>
+        </div>
+    </footer>
+
+{% endblock %}

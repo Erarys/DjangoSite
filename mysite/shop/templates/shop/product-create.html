@@ -1,0 +1,22 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Создать новый продукт
+{% endblock %}
+{% block style %}
+	{% load static %}
+   <link rel="stylesheet" href="{% static 'shop/css/products_style.css' %}">
+{% endblock %}
+{% block body %}
+    <div>
+        <a href="{% url 'shop:products_list' %}"><h1>GreenApple</h1></a>
+    </div>
+    <div>
+        <h2>Создать новый продукт</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success btn-lg">Создать</button>
+        </form>
+    </div>
+{% endblock %}

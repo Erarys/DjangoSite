@@ -1,0 +1,20 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Удалить продукт
+{% endblock %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/css/products_style.css' %}">
+{% endblock %}
+{% block body %}
+    <header>
+        <a href="{% url 'shop:product_details' pk=object.pk %}"><h1>GreenApple</h1></a>
+        <h2>Вы действительно хотите удалить продукт?</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-danger btn-lg">Удалить</button>
+        </form>
+    </header>
+{% endblock %}

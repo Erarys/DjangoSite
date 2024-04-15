@@ -1,0 +1,14 @@
+{% extends 'myauth/base.html' %}
+
+{% block title %}
+	Logout
+{% endblock %}
+
+{% block body %}
+    <form method="post">
+    {% csrf_token %}
+        <label for="button">I you sure for logout?</label>
+        <input type="submit" id="button">
+    </form>
+
+{% endblock %}

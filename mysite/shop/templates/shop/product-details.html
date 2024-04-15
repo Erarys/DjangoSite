@@ -1,0 +1,38 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Купить {{ product.name }}
+{% endblock %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/css/products_style.css' %}">
+{% endblock %}
+{% block body %}
+    <section>
+        <a href="{% url 'shop:products_list' %}"><h1>GreenApple</h1></a>
+        <img src="{{ product.image.url }}">
+        <p>Мебель: {{ product.name }}</p>
+        <p>Цена: {{ product.price }}</p>
+        <p>Количество: {{ product.discount }}</p>
+        <p>Описание: {{ product.description }}</p>
+        <p>Поступило в продажу: {{ product.created_at }}</p>
+
+        <form action="{% url "cart:cart_add" pk=product.id %}" method="post">
+            {{ cart_product_form }}
+            {% csrf_token %}
+            <input type="submit" value="Добавить в корзинку">
+        </form>
+
+        {% if perms.superuser %}
+            <div><br>
+                <a href="{% url 'shop:product_update' pk=product.pk %}">
+                    <button type="button" class="btn btn-warning btn-lg">Обновить</button>
+                </a>
+                <a href="{% url 'shop:product_delete' pk=product.pk %}">
+                    <button type="button" class="btn btn-danger btn-lg">Удалить</button>
+                </a>
+            </div>
+
+        {% endif %}
+    </section>
+{% endblock %}

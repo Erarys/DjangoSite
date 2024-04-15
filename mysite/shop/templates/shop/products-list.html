@@ -1,0 +1,42 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}
+    Мебели
+{% endblock %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/css/product_list_style.css' %}">
+{% endblock %}
+{% block body %}
+    <section>
+        <a href="{% url 'shop:home_page' %}"><h1>GreenApple</h1></a>
+        {% if perms.superuser %}
+            <div>
+                <a href="{% url 'shop:product_create' %}">
+                    <button type="button" class="btn btn-primary">Добавить новый продукт</button>
+                </a>
+            </div><br>
+        {% endif %}
+
+        {% if products %}
+            <div class="products_block">
+                {% for product in products %}
+                    <div class="product_block">
+
+                        <a href="{% url 'shop:product_details' pk=product.pk %}">
+                            <img class="medicines_img" src="{{ product.image.url }}">
+                        </a>
+                        <p>Мебель: {{ product.name }}</p>
+                        <p>Цена: {{ product.price }}</p>
+                        <p>Количество: {{ product.discount }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <h3>Тут пока ничего</h3>
+        {% endif %}
+
+    </section>
+
+
+{% endblock %}

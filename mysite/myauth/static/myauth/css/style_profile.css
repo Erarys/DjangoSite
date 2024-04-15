@@ -1,0 +1,12 @@
+h1 {
+    font-size: 45px;
+    font-weight: bold;
+    color: green;
+}
+
+body {
+   background-color: rgba(255, 255, 255, 0.66);
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px 40px;
+}

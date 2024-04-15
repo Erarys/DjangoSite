@@ -1,0 +1,21 @@
+{% extends 'myauth/base.html' %}
+
+
+{% block title %}
+    Регистрация
+{% endblock %}
+{% block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/css/products_style.css' %}">
+{% endblock %}
+{% block body %}
+    <h1>Register</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-lg">Регистрация</button>
+        <a href="{% url 'myauth:login' %}">
+            <button type="button" class="btn btn-secondary btn-lg">Войти</button>
+        </a>
+    </form>
+{% endblock %}
