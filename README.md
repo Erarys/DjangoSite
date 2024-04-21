@@ -19,7 +19,6 @@ GreenApple - Веб сайт сделанный на основе популяр
 Согласимся с условиями `y`
 8. Запустите сервер `python mysite/manage.py runserver`
 ![2024-04-15_19-26-38.png](mysite%2Fmedia%2Freadme_image%2F2024-04-15_19-26-38.png)
-![2024-04-15_19-27-08.png](mysite%2Fmedia%2Freadme_image%2F2024-04-15_19-27-08.png)
 ![2024-04-15_19-27-20.png](mysite%2Fmedia%2Freadme_image%2F2024-04-15_19-27-20.png)
 ![2024-04-15_19-27-38.png](mysite%2Fmedia%2Freadme_image%2F2024-04-15_19-27-38.png)
 ![2024-04-15_19-28-36.png](mysite%2Fmedia%2Freadme_image%2F2024-04-15_19-28-36.png)

@@ -3,32 +3,36 @@
 {% block title %}
     Профиль
 {% endblock %}
+
 {% block style %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'shop/css/products_style.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/product_list_style.css' %}">
 {% endblock %}
+
 {% block body %}
-    <a href="{% url 'shop:home_page' %}"><h1>GreenApple</h1></a>
-    <h2>Профиль</h2>
-    {% if user.is_authenticated %}
-        <p>Пользователь: {{ user.username }}</p>
-        <p>Имя: {{ user.first_name }}</p>
-        <p>Фамилия: {{ user.last_name }}</p>
-        <p>Почта: {{ user.email }}</p>
+    <header>
+        <a href="{% url 'shop:home_page' %}"><h1>GreenApple</h1></a>
+        <h2>Профиль</h2>
+        {% if user.is_authenticated %}
+            <p>Пользователь: {{ user.username }}</p>
+            <p>Имя: {{ user.first_name }}</p>
+            <p>Фамилия: {{ user.last_name }}</p>
+            <p>Почта: {{ user.email }}</p>
 
-        <a href="{% url 'myauth:logout' %}">
-            <button type="button" class="btn btn-secondary btn-lg">Выйти из аккаунта</button>
-        </a>
-        <a href="{% url 'myauth:update_profile' %}">
-            <button type="button" class="btn btn-primary btn-lg">Обновить данные</button>
-        </a>
+            <a href="{% url 'myauth:logout' %}">
+                <button type="button" class="btn btn-secondary btn-lg">Выйти из аккаунта</button>
+            </a>
+            <a href="{% url 'myauth:update_profile' %}">
+                <button type="button" class="btn btn-primary btn-lg">Обновить данные</button>
+            </a>
 
 
-        {#        <p>Корзина{{ baskets }}</p>#}
-    {% else %}
-        <h2>Пользователь не авторизован</h2>
-        <a href="{% url 'myauth:login' %}">
-            <button type="button" class="btn btn-secondary btn-lg">Войти в аккаунт</button>
-        </a>
-    {% endif %}
+            {#        <p>Корзина{{ baskets }}</p>#}
+        {% else %}
+            <h2>Пользователь не авторизован</h2>
+            <a href="{% url 'myauth:login' %}">
+                <button type="button" class="btn btn-secondary btn-lg">Войти в аккаунт</button>
+            </a>
+        {% endif %}
+    </header>
 {% endblock %}

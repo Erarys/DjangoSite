@@ -5,17 +5,20 @@
 {% endblock %}
 
 {% block body %}
-    {% if user.is_authenticated %}
-        <div>
-            <form method="post">
-                <p>Пользователь {{ user.username }}</p>
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Сохранить</button>
-            </form>
-        </div>
-    {% else %}
-        <h2>Вы не авторизованы в нашем сайте</h2>
-        <a href="{% url 'cart:login' %}">login</a>
-    {% endif %}
+    <header>
+        {% if user.is_authenticated %}
+            <div>
+                <form method="post">
+                    <p>Пользователь {{ user.username }}</p>
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit">Сохранить</button>
+                </form>
+            </div>
+        {% else %}
+            <h2>Вы не авторизованы в нашем сайте</h2>
+            <a href="{% url 'cart:login' %}">login</a>
+        {% endif %}
+    </header>
+
 {% endblock %}

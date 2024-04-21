@@ -3,18 +3,22 @@
 {% block title %}
     Обновить продукт
 {% endblock %}
+
 {% block style %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'shop/css/products_style.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/product_list_style.css' %}">
 {% endblock %}
+
 {% block body %}
-    <div>
-        <a href="{% url 'shop:product_details' pk=object.pk %}"><h1>GreenApple</h1></a>
-    </div>
-    <h2>Обновить продукт</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-success btn-lg">Сохранить</button>
-    </form>
+    <header>
+        <div>
+            <a href="{% url 'shop:product_details' pk=object.pk %}"><h1>GreenApple</h1></a>
+        </div>
+        <h2>Обновить продукт</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success btn-lg">Сохранить</button>
+        </form>
+    </header>
 {% endblock %}

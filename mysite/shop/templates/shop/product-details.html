@@ -11,6 +11,7 @@
     <section>
         <a href="{% url 'shop:products_list' %}"><h1>GreenApple</h1></a>
         <img src="{{ product.image.url }}">
+        <p>Категория: {{ product.category }}</p>
         <p>Мебель: {{ product.name }}</p>
         <p>Цена: {{ product.price }}</p>
         <p>Количество: {{ product.discount }}</p>

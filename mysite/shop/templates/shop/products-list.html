@@ -3,10 +3,12 @@
 {% block title %}
     Мебели
 {% endblock %}
+
 {% block style %}
     {% load static %}
     <link rel="stylesheet" href="{% static 'shop/css/product_list_style.css' %}">
 {% endblock %}
+
 {% block body %}
     <section>
         <a href="{% url 'shop:home_page' %}"><h1>GreenApple</h1></a>
@@ -17,6 +19,17 @@
                 </a>
             </div><br>
         {% endif %}
+        <div>
+            <form method="get" id="sortProduct">
+                {% csrf_token %}
+                <select name="category">
+                    <option value="goods">Все товары</option>
+                    <option value="bed">Кровать</option>
+                    <option value="table">стол</option>
+                </select>
+                <button type="submit" class="btn btn-success">Success</button>
+            </form>
+        </div>
 
         {% if products %}
             <div class="products_block">
@@ -35,8 +48,5 @@
         {% else %}
             <h3>Тут пока ничего</h3>
         {% endif %}
-
     </section>
-
-
 {% endblock %}

@@ -3,16 +3,20 @@
 {% block title %}
     Обновить личные данные
 {% endblock %}
+
 {% block style %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'shop/css/products_style.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/product_list_style.css' %}">
 {% endblock %}
+
 {% block body %}
-    <a href="{% url 'myauth:profile' %}"><h1>GreenApple</h1></a>
-    <form method="post">
-        <h2>Обновить личные данные пользователя</h2>
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary btn-lg">Сохранить</button>
-    </form>
+    <header>
+        <a href="{% url 'myauth:profile' %}"><h1>GreenApple</h1></a>
+        <form method="post">
+            <h2>Обновить личные данные пользователя</h2>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-lg">Сохранить</button>
+        </form>
+    </header>
 {% endblock %}
