@@ -4,10 +4,12 @@
 {% block title %}
     Регистрация
 {% endblock %}
-{% block style %}
+
+{% block components %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'shop/css/products_style.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/product_list_style.css' %}">
 {% endblock %}
+
 {% block body %}
     <h1>Register</h1>
     <form method="post">

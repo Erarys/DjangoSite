@@ -3,10 +3,12 @@
 {% block title %}
     Профиль
 {% endblock %}
-{% block style %}
+
+{% block components %}
     {% load static %}
-    <link rel="stylesheet" href="{% static 'shop/css/products_style.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/product_list_style.css' %}">
 {% endblock %}
+
 {% block body %}
     <a href="{% url 'shop:home_page' %}"><h1>GreenApple</h1></a>
     <h2>Профиль</h2>
