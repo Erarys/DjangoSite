@@ -1,7 +1,0 @@
-[build]
-builder = "railpack/python@3.12.11"
-buildCommand = "pip install -r mysite/requirements.txt"
-
-[deploy]
-startCommand = "gunicorn mysite.mysite.wsgi:application --bind 0.0.0.0:$PORT"
-rootDirectory = "mysite"
