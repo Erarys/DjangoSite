@@ -13,7 +13,6 @@
     <a href="{% url 'shop:home_page' %}"><h1>GreenApple</h1></a>
     <h2>Профиль</h2>
     {% if user.is_authenticated %}
-        <p>Пользователь: {{ user.username }}</p>
         <p>Имя: {{ user.first_name }}</p>
         <p>Фамилия: {{ user.last_name }}</p>
         <p>Почта: {{ user.email }}</p>
