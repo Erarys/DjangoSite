@@ -78,18 +78,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-
+import dj_database_url
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("PGDATABASE", os.getenv("POSTGRES_DB")),
-        "USER": os.getenv("PGUSER", os.getenv("POSTGRES_USER")),
-        "PASSWORD": os.getenv("PGPASSWORD", os.getenv("POSTGRES_PASSWORD")),
-        "HOST": os.getenv("PGHOST"),
-        "PORT": os.getenv("PGPORT"),
-    }
+    "default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))
 }
 # DATABASES = {
 #     "default": {
