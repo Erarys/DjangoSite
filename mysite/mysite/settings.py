@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-(giv056(m)$nx8$oq))44g6=azqkv_9y4+1ycxtnpx(#)@v4#v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*", "djangosite-production.up.railway.app"]  # test
+ALLOWED_HOSTS = ["*", "djangosite-production.up.railway.app", "http://127.0.0.1:8000/"]  # test
 
 # Application definition
 
@@ -81,8 +81,19 @@ import dj_database_url
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+# DATABASES = {
+#     "default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))
+# }
+
 DATABASES = {
-    "default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "market",
+        "USER": "postgres",
+        "PASSWORD": "1234",
+        "HOST": "localhost",
+        "PORT": "5432",
+    }
 }
 
 # Password validation

@@ -2,7 +2,7 @@
 
 
 {% block title %}
-    GreenApple - Аптека в Алматы
+    GreenApple - мебели в Алмате
 {% endblock %}
 
 {% block body %}
@@ -19,7 +19,7 @@
                 </div>
                 <div class="mb-3">
                     <input type="reset" class="btn btn-secondary">
-{#                    <input type="submit" class="btn btn-success send_button">#}
+                    {#                    <input type="submit" class="btn btn-success send_button">#}
                     <button type="button" class="btn btn-success send_button">Отправить</button>
                 </div>
             </form>
@@ -43,7 +43,10 @@
         <div class="profile">
             <h1>GreenApple</h1>
             <p>Крупнейший в Казахстане мебельный-магазин</p>
-            <button class="btn btn-outline-success btn-lg product" data-link="http://127.0.0.1:8000/products">К товарам</button>
+            <button class="btn btn-outline-success btn-lg product"
+                    onclick="window.location.href='{% url 'shop:products_list' %}'">
+                К товарам
+            </button>
         </div>
     </section>
 
@@ -67,14 +70,15 @@
                 <p>Стулья</p>
             </div>
         </div>
-         <button class="btn btn-secondary btn-lg product ">Узнать стоимость</button>
+        <button class="btn btn-secondary btn-lg product ">Узнать стоимость</button>
     </section>
     <section class="price_section">
         <div class="fixed-container">
             <div class="price">
                 <h2>GreenApple основана в Германий</h2>
                 <p>
-                    Немецкая производственно-рознично торговая группа, одна из крупнейших в мире торговых сетей по продаже мебели и товаров для дома.
+                    Немецкая производственно-рознично торговая группа, одна из крупнейших в мире торговых сетей по
+                    продаже мебели и товаров для дома.
                 </p>
             </div>
         </div>
@@ -92,7 +96,7 @@
             <p>+7 707 777-55-44</p>
         </div>
         <div class="bottom order">
-             <button class="btn btn-secondary btn-lg leave_call">Заказать звонок</button>
+            <button class="btn btn-secondary btn-lg leave_call">Заказать звонок</button>
             <div class="media">
                 <img src="{% static 'shop/img/media/fb.png' %}" alt="Данный файл не найден">
                 <img src="{% static 'shop/img/media/vk.png' %}" alt="Данный файл не найден">
