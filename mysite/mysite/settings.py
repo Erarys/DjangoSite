@@ -81,20 +81,20 @@ import dj_database_url
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-DATABASES = {
-    "default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))
-}
-
 # DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "market",
-#         "USER": "postgres",
-#         "PASSWORD": "1234",
-#         "HOST": "localhost",
-#         "PORT": "5432",
-#     }
+#     "default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))
 # }
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "market",
+        "USER": "postgres",
+        "PASSWORD": "1234",
+        "HOST": "localhost",
+        "PORT": "5432",
+    }
+}
 
 CSRF_TRUSTED_ORIGINS = [
     "https://dev.headloser.site"
