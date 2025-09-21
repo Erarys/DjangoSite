@@ -35,7 +35,6 @@ class ProductDetailsView(DetailView):
 
 class ProductCreateView(PermissionRequiredMixin, View):
     permission_required = "shop:superuser"
-
     def get(self, request: HttpRequest) -> HttpResponse:
         context = {
             "form": ProductCreateForm()
@@ -43,16 +42,19 @@ class ProductCreateView(PermissionRequiredMixin, View):
         return render(request, "shop/product-create.html", context)
 
     def post(self, request: HttpRequest) -> HttpResponse:
-        form = ProductCreateForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            url = reverse('shop:products_list')
-            return redirect(url)
+        if self.request.user.is_superuser:
+            form = ProductCreateForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                url = reverse('shop:products_list')
+                return redirect(url)
 
-        context = {
-            'form': form
-        }
-        return render(request, 'shop/product-create.html', context)
+            context = {
+                'form': form
+            }
+            return render(request, 'shop/product-create.html', context)
+
+        return redirect(reverse('shop:products_list'))
 
 
 # class ProductCreateView(PermissionRequiredMixin, CreateView):
