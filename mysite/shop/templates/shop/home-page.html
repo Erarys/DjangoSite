@@ -43,10 +43,10 @@
         <div class="profile">
             <h1>GreenApple</h1>
             <p>Крупнейший в Казахстане мебельный-магазин</p>
-            <button class="btn btn-outline-success btn-lg product"
-                    onclick="window.location.href='{% url 'shop:products_list' %}'">
-                К товарам
+            <button class="btn btn-outline-success btn-lg product">
+                <a href="{% url 'shop:products_list' %}">К товарам</a>
             </button>
+
         </div>
     </section>
 
