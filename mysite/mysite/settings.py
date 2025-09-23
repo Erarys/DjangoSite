@@ -134,7 +134,7 @@ LOGOUT_REDIRECT_URL = reverse_lazy("myauth:login")
 
 CART_SESSION_ID = 'cart'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = BASE_DIR / "media"
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
