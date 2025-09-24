@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*", "djangosite-production.up.railway.app", "http://127.0.0.1:8000/"]  # test
+ALLOWED_HOSTS = ["http://dev.headloser.site/"]
 
 # Application definition
 
@@ -143,3 +143,8 @@ STATIC_ROOT = '/var/www/mysite/static'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass
