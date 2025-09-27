@@ -6,7 +6,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+staticfiles
 .idea
 .vscode
 bot_run.bat
@@ -58,7 +58,8 @@ coverage.xml
 # Translations
 *.mo
 *.pot
-
+media/
+staticfiles/
 # Django stuff:
 *.log
 local_settings.py
