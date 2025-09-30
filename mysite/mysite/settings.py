@@ -94,9 +94,7 @@ DATABASES = {
     }
 }
 
-CSRF_TRUSTED_ORIGINS = [
-    "https://dev.headloser.site"
-]
+CSRF_TRUSTED_ORIGINS = ["https://headloser.site", "https://www.headloser.site", "https://dev.headloser.site"]
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
