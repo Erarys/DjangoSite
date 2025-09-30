@@ -1,18 +1,43 @@
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.http import HttpRequest, HttpResponseRedirect, HttpResponse
+from django.http import HttpRequest, HttpResponseRedirect, HttpResponse, JsonResponse
 from django.shortcuts import render, reverse, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import TemplateView, DetailView, CreateView, UpdateView, DeleteView, ListView
 from cart.forms import CartAddProductForm
-from shop.forms import OrderCreateForm, ProductCreateForm
+
+from shop.ai import ai_helper
+from shop.forms import OrderCreateForm, ProductCreateForm, SupportForm
 from shop.models import Product, Order, Basket
 
+from render_block import render_block_to_string
 
 class HomePageView(View):
     def get(self, request: HttpRequest):
-        return render(request, 'shop/home-page.html')
+        form = SupportForm()
+        context = {
+            'form': form
+        }
 
+        return render(request, 'shop/home-page.html', context)
+
+    def post(self, request: HttpRequest):
+        form = SupportForm(request.POST)
+        if form.is_valid():
+            question = form.cleaned_data['question']
+
+            answer = ai_helper(question)
+            # return JsonResponse({'answer': answer})
+            context = {
+                'form': form,
+                'answer': answer
+            }
+
+            html = render_block_to_string('shop/home-page.html', 'ask-question-block', context)
+            return HttpResponse(html)
+
+
+        return render(request, 'shop/home-page.html', {'form': form})
 
 class ProductsListView(ListView):
     template_name = "shop/products-list.html"

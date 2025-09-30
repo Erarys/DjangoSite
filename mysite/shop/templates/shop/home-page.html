@@ -49,6 +49,24 @@
         </div>
     </section>
 
+    {% block ask-question-block %}
+        <section>
+            <h1>
+                {% if answer %}
+                    {{ answer }}
+                {% endif %}
+            </h1>
+            <div id="ask-question">
+                <form hx-post="{% url 'shop:home_page' %}"
+                      hx-target="#ask-question"
+                      hx-swap="outerHTML">
+                    {{ form.as_p }}
+                    <input type="submit" value="Submit" autocomplete="off">
+                </form>
+            </div>
+        </section>
+    {% endblock %}
+
     <section class="second-block">
         <h2>Наши мебели просто топ</h2>
         <div class="services-block">
@@ -105,5 +123,8 @@
             </div>
         </div>
     </footer>
-
+    {#    {% block components %}#}
+    {#        <script src="{% static 'shop/js/script.js' %}"></script>#}
+    {#        <script src="{% static 'shop/js/online_assistant.js' %}"></script>#}
+    {#    {% endblock %}#}
 {% endblock %}
