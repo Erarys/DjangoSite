@@ -11,6 +11,9 @@ from llama_index.core import (
 import os
 from dotenv import load_dotenv
 
+os.environ['HTTP_PROXY'] = 'http://35.243.0.220:10018'
+os.environ['HTTPS_PROXY'] = 'http://35.243.0.220:10018'
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "..", "datasets", "data")
 STORAGE_DIR = os.path.join(BASE_DIR, "..", "datasets", "storage")
