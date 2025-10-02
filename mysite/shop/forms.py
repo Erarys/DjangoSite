@@ -25,6 +25,7 @@ class ProductCreateForm(forms.ModelForm):
 
 class SupportForm(forms.Form):
     question = forms.CharField(
+        label="",
         widget=forms.TextInput(attrs={
             "autocomplete": "off",
             "placeholder": ""

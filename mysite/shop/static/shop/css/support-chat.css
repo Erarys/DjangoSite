@@ -2,29 +2,67 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 300px;
+  width: 320px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   font-family: sans-serif;
-  z-index: 9999;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
 }
 
 #chat-header {
   background: #007bff;
-  color: white;
+  color: #fff;
   padding: 10px;
-  cursor: pointer;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  user-select: none;
+  font-weight: bold;
 }
 
 #chat-body {
-  background: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+#messages {
+  flex: 1;                 /* занимает всё оставшееся пространство */
+  overflow-x: auto;        /* прокрутка если сообщений много */
+  overflow-y: auto;        /* прокрутка если сообщений много */
+
+}
+
+#messages p.user {
+  text-align: right;
+  background: #007bff;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin: 4px 0;
+  display: inline-block;
+}
+
+#messages p.bot {
+  text-align: left;
+  background: #eee;
+  padding: 6px 10px;
+  border-radius: 8px;
+  margin: 4px 0;
+  display: inline-block;
+}
+
+#ask-question {
+  border-top: 1px solid #ddd;
+  padding: 8px;
+}
+
+#ask-question form {
+  display: flex;
+  align-items: center;   /* выравниваем поля по центру по вертикали */
+  gap: 6px;              /* расстояние между input и кнопкой */
+}
+#ask-question input[type="text"] {
+  flex: 1;
+  padding: 6px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  border-top: none;
-  padding: 10px;
-  max-height: 600px;
-  overflow-y: auto;
-  display: none; /* по умолчанию скрыто */
 }

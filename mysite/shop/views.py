@@ -12,32 +12,61 @@ from shop.models import Product, Order, Basket
 
 from render_block import render_block_to_string
 
+
+def questionlist(request):
+    session = request.session
+
+    if "chat_history" not in session:
+        session["chat_history"] = []
+    context = {
+        'chat_history': session["chat_history"]
+    }
+    html = render_block_to_string('shop/home-page.html', 'messages-block', context)
+    return HttpResponse(html)
 class HomePageView(View):
     def get(self, request: HttpRequest):
+        session = request.session
+
+        if "chat_history" not in session:
+            session["chat_history"] = []
+
         form = SupportForm()
         context = {
-            'form': form
+            'form': form,
+            'chat_history': session["chat_history"]
         }
-
         return render(request, 'shop/home-page.html', context)
 
     def post(self, request: HttpRequest):
         form = SupportForm(request.POST)
+        session = request.session
+
         if form.is_valid():
             question = form.cleaned_data['question']
-
             answer = ai_helper(question)
-            # return JsonResponse({'answer': answer})
+
+            # добавляем в историю
+            session["chat_history"].append({"sender": "user", "text": question})
+            session["chat_history"].append({"sender": "bot", "text": answer})
+            session.modified = True
+
             context = {
-                'form': form,
-                'answer': answer
+                'form': SupportForm(),
             }
 
             html = render_block_to_string('shop/home-page.html', 'ask-question-block', context)
-            return HttpResponse(html)
 
+            response = HttpResponse(html)
 
-        return render(request, 'shop/home-page.html', {'form': form})
+            if form.is_valid():
+                response['HX-Trigger'] = 'question_valid'
+            return response
+
+        return render(request, 'shop/home-page.html', {
+            'form': form,
+            'chat_history': session.get("chat_history", [])
+        })
+
 
 class ProductsListView(ListView):
     template_name = "shop/products-list.html"

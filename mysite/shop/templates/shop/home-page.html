@@ -51,28 +51,34 @@
         </div>
     </section>
 
-
     <div id="chat-widget">
-        <div id="chat-header">
-            💬 Поддержка
-        </div>
-        <div id="chat-body">
-            {% block ask-question-block %}
-                <div id="ask-question">
+        <div id="chat-header">💬 Поддержка</div>
+        {% block messages-block %}
+            <div id="chat-body" hx-trigger="question_valid from:body" hx-get="{% url 'shop:question-list' %}"
+                 hx-swap="outerHTML">
+                <div id="messages">
 
-                    <p>{{ answer }}</p>
-                    <form hx-post="{% url 'shop:home_page' %}"
-                          hx-target="#ask-question"
-                          hx-swap="outerHTML">
-                        {{ form.as_p }}
-                        <input type="submit" value="Отправить">
-                    </form>
+                    {% if chat_history %}
+                        {% for msg in chat_history %}
+                            <p class="{{ msg.sender }}">{{ msg.text }}</p>
+                        {% endfor %}
+                    {% endif %}
 
                 </div>
-            {% endblock %}
-        </div>
+            </div>
+        {% endblock %}
+        {% block ask-question-block %}
+            <div id="ask-question">
+                <form id="chat-form"
+                      hx-post="{% url 'shop:home_page' %}"
+                      hx-target="#ask-question"
+                      hx-swap="outerHTML">
+                    {{ form.as_ul }}
+                    <input type="submit" value="Отправить">
+                </form>
+            </div>
+        {% endblock %}
     </div>
-
 
 
     <section class="second-block">

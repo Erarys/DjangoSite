@@ -24,7 +24,7 @@ def ai_helper(question: str):
     load_dotenv()
 
     # Настройки LLM и эмбеддингов
-    Settings.llm = OpenAI(model="gpt-4o-mini", temperature=0.1, max_tokens=140)
+    Settings.llm = OpenAI(model="gpt-4o-mini", temperature=0.1, max_tokens=50)
     Settings.embed_model = OpenAIEmbedding(
         model="text-embedding-3-small",
         embed_batch_size=100
