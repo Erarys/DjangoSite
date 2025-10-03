@@ -23,7 +23,7 @@
 #chat-body {
   display: flex;
   flex-direction: column;
-  max-height: 400px;         /* изначально развёрнут */
+  height: 400px;         /* изначально развёрнут */
   overflow-y: auto;
 }
 

@@ -26,7 +26,7 @@ def questionlist(request):
 class HomePageView(View):
     def get(self, request: HttpRequest):
         session = request.session
-
+        session["chat_history"] = []
         if "chat_history" not in session:
             session["chat_history"] = []
 
