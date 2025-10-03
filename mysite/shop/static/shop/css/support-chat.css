@@ -2,7 +2,8 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 320px;
+  width: 350px;
+
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   font-family: sans-serif;
@@ -15,14 +16,17 @@
   background: #007bff;
   color: #fff;
   padding: 10px;
+  border-radius: 10px 10px 0 0;
   font-weight: bold;
 }
 
 #chat-body {
   display: flex;
   flex-direction: column;
-  height: 400px;
+  max-height: 400px;         /* изначально развёрнут */
+  overflow-y: auto;
 }
+
 
 #messages {
   flex: 1;                 /* занимает всё оставшееся пространство */

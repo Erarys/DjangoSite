@@ -73,7 +73,7 @@
                       hx-post="{% url 'shop:home_page' %}"
                       hx-target="#ask-question"
                       hx-swap="outerHTML">
-                    {{ form.as_ul }}
+                    {{ form.question }}
                     <input type="submit" value="Отправить">
                 </form>
             </div>
