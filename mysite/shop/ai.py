@@ -19,7 +19,12 @@ DATA_DIR = os.path.join(BASE_DIR, "..", "datasets", "data")
 STORAGE_DIR = os.path.join(BASE_DIR, "..", "datasets", "storage")
 
 
-def ai_helper(question: str):
+def ai_helper(question: str, chat_history: list):
+    conversation_text = ""
+    for msg in chat_history:
+        conversation_text += f"{msg['role']}: {msg['content']}\n"
+    conversation_text += f"user: {question}"
+
     # Загружаем ключи из .env
     load_dotenv()
 
@@ -46,7 +51,7 @@ def ai_helper(question: str):
 
     # Запрос
     query_engine = index.as_query_engine()
-    response = query_engine.query(f"{question}. Ответь на русском языке.")
+    response = query_engine.query(f"{conversation_text}. Ответь на русском языке.")
     return str(response.response)
 
 

@@ -60,7 +60,7 @@
 
                     {% if chat_history %}
                         {% for msg in chat_history %}
-                            <p class="{{ msg.sender }}">{{ msg.text }}</p>
+                            <p class="{{ msg.role }}">{{ msg.content }}</p>
                         {% endfor %}
                     {% endif %}
 

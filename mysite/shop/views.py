@@ -43,11 +43,12 @@ class HomePageView(View):
 
         if form.is_valid():
             question = form.cleaned_data['question']
-            answer = ai_helper(question)
+            chat_history = session["chat_history"]
+            answer = ai_helper(question, chat_history)
 
             # добавляем в историю
-            session["chat_history"].append({"sender": "user", "text": question})
-            session["chat_history"].append({"sender": "bot", "text": answer})
+            session["chat_history"].append({"role": "user", "content": question})
+            session["chat_history"].append({"role": "assistant", "content": answer})
             session.modified = True
 
             context = {
